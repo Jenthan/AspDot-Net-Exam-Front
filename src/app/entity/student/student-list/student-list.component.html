@@ -1,0 +1,204 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+      Students Create
+    </div>
+    <div class="container">
+      <!-- Success Alert -->
+      <div class="alert alert-success" role="alert" *ngIf="successAlertVisible">
+        <h2 class="alert-heading">Student Created Successfully!</h2>
+      </div>
+    
+      <!-- Error Alert -->
+      <div class="alert alert-danger" role="alert" *ngIf="errorAlertVisible">
+        <h2 class="alert-heading">Error Creating Student!</h2>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row justify-content-center mb-2">
+        <div class="col-sm-8">
+          <div class="card mt-3">
+            <div class="card-header">
+              <h2>Create Student</h2>
+            </div>
+            <div class="card-body">
+              <form [formGroup] = "studentFormGroup"  (ngSubmit)="onSubmitstudent()">
+              
+                <!-- FirstName -->
+                <div class="mb-4 row align-items-center">
+                  <label class="col-sm-3 col-form-label form-label-title"> <span
+                      style="color: rgb(243, 69, 69);">*</span> Name</label>
+                  <div class="col-sm-9">
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="firstName" placeholder="Student FirstName"
+                        formControlName="firstName">
+                    </div>
+                    <div
+                      *ngIf="studentFormGroup.get('firstName')?.hasError('required') && studentFormGroup.get('firstName')?.touched"
+                      class="form-text text-danger">
+                      FirstName is required
+                    </div>
+
+                  </div>
+                </div>
+                <!-- LastName -->
+                <div class="mb-4 row align-items-center">
+                  <label class="col-sm-3 col-form-label form-label-title"> <span
+                      style="color: rgb(243, 69, 69);">*</span> Name</label>
+                  <div class="col-sm-9">
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="lastName" placeholder="Student LastName"
+                        formControlName="lastName">
+                    </div>
+                    <div
+                      *ngIf="studentFormGroup.get('lastName')?.hasError('required') && studentFormGroup.get('lastName')?.touched"
+                      class="form-text text-danger">
+                      LastName is required
+                    </div>
+
+                  </div>
+                </div>
+                <!-- Email -->
+                <div class="mb-4 row align-items-center">
+                  <label class="col-sm-3 col-form-label form-label-title"> <span
+                      style="color: rgb(243, 69, 69);">*</span> Email</label>
+                  <div class="col-sm-9">
+                    <div class="input-group">
+                      <input type="email" class="form-control" name="email" placeholder="Student Name"
+                        formControlName="email">
+                    </div>
+                    <div
+                      *ngIf="studentFormGroup.get('email')?.hasError('required') && studentFormGroup.get('email')?.touched"
+                      class="form-text text-danger">
+                      Email is required
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- DateOfBirth -->
+                <div class="mb-4 row align-items-center">
+                  <label class="col-sm-3 col-form-label form-label-title"> <span
+                      style="color: rgb(243, 69, 69);">*</span> Student DateOfBirth</label>
+                  <div class="col-sm-9">
+                    <div class="input-group">
+                      <input type="date" class="form-control" name="dateOfBirth" placeholder="Student DateOfBirth"
+                        formControlName="dateOfBirth">
+                    </div>
+                    <div
+                      *ngIf="studentFormGroup.get('dateOfBirth')?.hasError('required') && studentFormGroup.get('dateOfBirth')?.touched"
+                      class="form-text text-danger">
+                      DateOfBirth is required
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ParentName -->
+                <div class="mb-4 row align-items-center">
+                  <label class="col-sm-3 col-form-label form-label-title"> <span
+                      style="color: rgb(243, 69, 69);">*</span> Name</label>
+                  <div class="col-sm-9">
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="parentName" placeholder="Student ParentName"
+                        formControlName="parentName">
+                    </div>
+                    <div
+                      *ngIf="studentFormGroup.get('parentName')?.hasError('required') && studentFormGroup.get('parentName')?.touched"
+                      class="form-text text-danger">
+                      ParentName is required
+                    </div>
+
+                  </div>
+                </div>
+                <!-- Parent Mobile Number -->
+                <div class="mb-4 row align-items-center">
+                  <label class="col-sm-3 col-form-label form-label-title"> <span
+                      style="color: rgb(243, 69, 69);">*</span>Mobile Number</label>
+                  <div class="col-sm-9">
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="parentPhoneNumber" placeholder="Parent Mobile number"
+                        formControlName="parentPhoneNumber">
+                    </div>
+                    <div
+                      *ngIf="studentFormGroup.get('parentPhoneNumber')?.hasError('minlength') && studentFormGroup.get('parentPhoneNumber')?.touched"
+                      class="form-text text-danger">
+                      Parent Phone Number Minimum Length is 10
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Address -->
+                <div class="mb-4 row align-items-center">
+                  <label class="col-sm-3 col-form-label form-label-title"> <span
+                      style="color: rgb(243, 69, 69);">*</span> Student Address</label>
+                  <div class="col-sm-9">
+                    <div class="input-group">
+                      <input type="text" class="form-control"  name="address"
+                        placeholder="Student Address" formControlName="address">
+                    </div>
+                    <div
+                    *ngIf="studentFormGroup.get('address')?.hasError('required') && studentFormGroup.get('address')?.touched"
+                    class="form-text text-danger">
+                    Address is required
+                  </div>
+                  </div>
+                </div>
+                <div class="mb-4 row align-items-center">
+                  <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success">Save</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row mt-3">
+        <div class="card">
+          <div class="card-header">
+            Student List
+          </div>
+          <div class="card-body">
+            <div class="col-sm-12">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Email</th>
+                    <th>DateOfBirth</th>
+                    <th>ParentName</th>
+                    <th>ParentPhoneNumber</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of students; let i = index">
+                    <th scope="row">{{i}}</th>
+                    <th scope="row">{{item.firstName}}</th>
+                    <th scope="row">{{item.lastName}}</th>
+                    <th scope="row">{{item.email}}</th>
+                    <th scope="row">{{item.dateOfBirth}}</th>
+                    <th scope="row">{{item.parentName}}</th>
+                    <th scope="row">{{item.parentPhoneNumber}}</th>
+                    <th scope="row">{{item.address}}</th>
+                    <th scope="row">
+                      <a class="btn  btn-link link-danger" (click)="deleteStudent(item.studentId)">Delete</a>
+                      <a class="btn btn-link link-primary" (click)="fillform(item)">Edit</a>
+                    </th>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
